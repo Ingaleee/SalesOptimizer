@@ -1,6 +1,6 @@
 ﻿namespace OzonSales.Domain.Abstractions;
 
-public interface IUnitOfWork<TEntity>
+public interface IDataProvider<TEntity>
 {
     Task GetAsync();
     Task UpdateAsync();

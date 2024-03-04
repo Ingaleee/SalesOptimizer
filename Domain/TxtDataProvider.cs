@@ -2,7 +2,7 @@
 
 namespace OzonSales.Domain;
 
-public class DataProvider<TEntity> : IDataProvider<TEntity>
+public class TxtDataProvider<TEntity> : IDataProvider<TEntity>
 {
     public Task GetAsync()
     {
