@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{8E189C47-19E3-4BE3-B80D-E38B7922B2E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{CFF29027-61E5-4D27-883D-F11D6FE3D27D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{CFF29027-61E5-4D27-883D-F11D6FE3D27D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
