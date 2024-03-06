@@ -1,6 +1,8 @@
-﻿namespace ConsoleApp.Abstractions;
+﻿using ConsoleApp.Types;
+
+namespace ConsoleApp.Abstractions;
 
 public interface ICommandParser
 {
-    BaseCommand ToCommand(string input);
+    Command ToCommand(string input);
 }

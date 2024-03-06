@@ -1,19 +1,18 @@
 ﻿using ConsoleApp.Abstractions;
-using ConsoleApp.Commands;
 using ConsoleApp.Types;
 
 namespace ConsoleApp;
 
 public class CommandParser : ICommandParser
 {
-    public BaseCommand? ToCommand(string input)
+    public Command? ToCommand(string input)
     {
         var parts = input.Split(' ');
         if (parts.Length < 2)
         {
             return null;
         }
-        
+
         if (!ulong.TryParse(parts[1], out var id))
         {
             return null;
@@ -25,12 +24,14 @@ public class CommandParser : ICommandParser
             uint.TryParse(parts[2], out days);
         }
         
-        return parts[0] switch
+        var type = parts[0].ToLower() switch
         {
-            "ads" => new AdsCommand(id, days),
-            "prediction" => new PredictionCommand(id, days),
-            "demand" => new DemandCommand(id, days),
-            _ => null,
+            "ads" => CommandType.Ads,
+            "prediction" => CommandType.Prediction,
+            "demand" => CommandType.Demand,
+            _ => CommandType.Undefined,
         };
+
+        return new Command { Id = id, Type = type, Days = days };
     }
 }
