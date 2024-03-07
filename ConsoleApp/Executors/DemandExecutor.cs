@@ -1,6 +1,6 @@
 ﻿using OzonSales.Business.Abstractions;
-using OzonSales.Business.Types;
 using OzonSales.ConsoleApp.Abstractions.Executors;
+using OzonSales.Types.Commands;
 
 namespace OzonSales.ConsoleApp.Executors;
 
@@ -13,6 +13,6 @@ public class DemandExecutor : IDemandExecutor
     }
     public async Task<decimal> ExecuteAsync(Command command)
     {
-        return await _sales.GetDemandAsync();
+        return await _sales.GetDemandAsync(command);
     }
 }

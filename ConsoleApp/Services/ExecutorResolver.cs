@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using OzonSales.Business.Primitives;
-using OzonSales.Business.Types;
 using OzonSales.ConsoleApp.Abstractions;
 using OzonSales.ConsoleApp.Executors;
+using OzonSales.Types.Commands;
+using OzonSales.Types.Primitives;
 
 namespace OzonSales.ConsoleApp.Services;
 

@@ -1,6 +1,6 @@
-﻿using OzonSales.Business.Primitives;
+﻿using OzonSales.Types.Primitives;
 
-namespace OzonSales.Business.Types;
+namespace OzonSales.Types.Commands;
 
 public class Command
 {

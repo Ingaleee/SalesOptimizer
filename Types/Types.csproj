@@ -4,11 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>OzonSales.Business</RootNamespace>
+        <RootNamespace>OzonSales.Types</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Types\Types.csproj" />
-    </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using OzonSales.Business.Types;
+﻿using OzonSales.Types.Commands;
 
 namespace OzonSales.ConsoleApp.Abstractions;
 

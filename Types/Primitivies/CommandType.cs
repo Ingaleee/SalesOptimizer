@@ -1,4 +1,4 @@
-﻿namespace OzonSales.Business.Primitives;
+﻿namespace OzonSales.Types.Primitives;
 
 public enum CommandType
 {

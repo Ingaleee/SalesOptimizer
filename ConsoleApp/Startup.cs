@@ -11,6 +11,8 @@ public static class Startup
     public static IServiceProvider BuildConsoleProvider(this IServiceCollection services)
     {
         services.AddTransient<ICommandParser, CommandParser>();
+
+        services.AddTransient<IExecutorResolver, ExecutorResolver>();
         
         services.AddTransient<IAdsExecutor, AdsCommandExecutor>();
         services.AddTransient<IDemandExecutor, DemandExecutor>();
