@@ -1,12 +1,18 @@
-﻿using OzonSales.Business.Types;
-using OzonSales.ConsoleApp.Abstractions;
+﻿using OzonSales.Business.Abstractions;
+using OzonSales.Business.Types;
+using OzonSales.ConsoleApp.Abstractions.Executors;
 
 namespace OzonSales.ConsoleApp.Executors;
 
-public class AdsCommandExecutor : IExecutor
+public class AdsCommandExecutor : IAdsExecutor
 {
-    public Task<decimal> ExecuteAsync(Command command)
+    private readonly ISalesService _sales;
+    public AdsCommandExecutor(ISalesService sales)
     {
-        throw new NotImplementedException();
+        _sales = sales;
+    }
+    public async Task<decimal> ExecuteAsync(Command command)
+    {
+        return await _sales.GetADSAsync();
     }
 }

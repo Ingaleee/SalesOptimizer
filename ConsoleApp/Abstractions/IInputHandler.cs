@@ -1,6 +1,6 @@
 ﻿namespace OzonSales.ConsoleApp.Abstractions;
 
-public interface IHandler
+public interface IInputHandler
 {
     Task HandleAsync();
 }

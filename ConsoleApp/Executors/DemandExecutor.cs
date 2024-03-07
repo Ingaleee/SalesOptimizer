@@ -1,10 +1,10 @@
 ﻿using OzonSales.Business.Abstractions;
 using OzonSales.Business.Types;
-using OzonSales.ConsoleApp.Abstractions;
+using OzonSales.ConsoleApp.Abstractions.Executors;
 
 namespace OzonSales.ConsoleApp.Executors;
 
-public class DemandExecutor : IExecutor
+public class DemandExecutor : IDemandExecutor
 {
     private readonly ISalesService _sales;
     public DemandExecutor(ISalesService sales)
@@ -13,6 +13,6 @@ public class DemandExecutor : IExecutor
     }
     public async Task<decimal> ExecuteAsync(Command command)
     {
-        throw new NotImplementedException();
+        return await _sales.GetDemandAsync();
     }
 }

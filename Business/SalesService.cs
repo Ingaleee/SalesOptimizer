@@ -9,7 +9,7 @@ public class SalesService : ISalesService
         throw new NotImplementedException();
     }
 
-    public Task<uint> GetSalesPredictionAsync()
+    public Task<uint> GetPredictionAsync()
     {
         throw new NotImplementedException();
     }

@@ -2,7 +2,7 @@
 
 namespace OzonSales.ConsoleApp.Services;
 
-public class InputHandler : IHandler
+public class InputHandler : IInputHandler
 {
     private readonly ICommandParser _parser;
     private readonly IExecutorResolver _resolver;
