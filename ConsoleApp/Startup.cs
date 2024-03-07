@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp;
+﻿namespace OzonSales.ConsoleApp;
 
 public static class Startup
 {

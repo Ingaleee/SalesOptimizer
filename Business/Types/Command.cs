@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Types;
+﻿using OzonSales.Business.Primitives;
+
+namespace OzonSales.Business.Types;
 
 public class Command
 {

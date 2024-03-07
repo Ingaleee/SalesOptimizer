@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp.Abstractions;
+﻿namespace OzonSales.ConsoleApp.Abstractions;
 
 public interface IHandler
 {

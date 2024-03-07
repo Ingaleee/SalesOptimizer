@@ -1,10 +1,11 @@
-﻿using ConsoleApp.Abstractions;
+﻿using OzonSales.Business.Types;
+using OzonSales.ConsoleApp.Abstractions;
 
-namespace ConsoleApp;
+namespace OzonSales.ConsoleApp.Executors;
 
 public class PredictionExecutor : IExecutor
 {
-    public async Task<decimal> ExecuteAsync()
+    public Task<decimal> ExecuteAsync(Command command)
     {
         throw new NotImplementedException();
     }

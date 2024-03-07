@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp.Types;
+﻿namespace OzonSales.Business.Primitives;
 
 public enum CommandType
 {

@@ -1,7 +1,8 @@
-﻿using ConsoleApp.Abstractions;
-using ConsoleApp.Types;
+﻿using OzonSales.Business.Primitives;
+using OzonSales.Business.Types;
+using OzonSales.ConsoleApp.Abstractions;
 
-namespace ConsoleApp;
+namespace OzonSales.ConsoleApp.Services;
 
 public class CommandParser : ICommandParser
 {

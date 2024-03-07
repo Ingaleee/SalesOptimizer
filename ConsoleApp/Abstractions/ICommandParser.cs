@@ -1,6 +1,6 @@
-﻿using ConsoleApp.Types;
+﻿using OzonSales.Business.Types;
 
-namespace ConsoleApp.Abstractions;
+namespace OzonSales.ConsoleApp.Abstractions;
 
 public interface ICommandParser
 {

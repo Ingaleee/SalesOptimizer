@@ -1,6 +1,8 @@
-﻿namespace ConsoleApp.Abstractions;
+﻿using OzonSales.Business.Types;
+
+namespace OzonSales.ConsoleApp.Abstractions;
 
 public interface IExecutor
 {
-    Task<decimal> ExecuteAsync();
+    Task<decimal> ExecuteAsync(Command command);
 }

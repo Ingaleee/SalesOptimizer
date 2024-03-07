@@ -1,24 +1,35 @@
-﻿using ConsoleApp.Abstractions;
+﻿using OzonSales.ConsoleApp.Abstractions;
 
-namespace ConsoleApp;
+namespace OzonSales.ConsoleApp.Services;
 
 public class InputHandler : IHandler
 {
     private readonly ICommandParser _parser;
     private readonly IExecutorResolver _resolver;
 
-    public InputHandler(ICommandParser parser)
+    public InputHandler(ICommandParser parser, IExecutorResolver resolver)
     {
         _parser = parser;
+        _resolver = resolver;
     }
 
     public async Task HandleAsync()
     {
         while (true)
         {
+            Console.WriteLine("Allowed commands: <ads|prediction|demand> [id] [days]");
+            Console.WriteLine("Input command:");
             var input = Console.ReadLine();
+            if (input?.ToLower() == "q")
+            {
+                break;
+            }
+            
             var command = _parser.ToCommand(input);
             var executor = _resolver.GetExecutor(command);
+            var result = await executor.ExecuteAsync(command);
+
+            Console.WriteLine($"Response: {result}");
         }
     }
 }
