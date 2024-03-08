@@ -1,4 +1,5 @@
-﻿using OzonSales.Domain.Abstractions;
+﻿using System.Text.Json;
+using OzonSales.Domain.Abstractions;
 using OzonSales.Domain.Configurations;
 
 namespace OzonSales.Domain;
@@ -12,8 +13,10 @@ public class JsonDataProvider<TEntity> : IDataProvider<TEntity>
         _options = options;
     }
 
-    public async Task GetAsync()
+    public async Task<ICollection<TEntity>?> GetAsync()
     {
         var path = _options.Path;
+        var content = await File.ReadAllTextAsync(path);
+        return JsonSerializer.Deserialize<ICollection<TEntity>>(content);
     }
 }

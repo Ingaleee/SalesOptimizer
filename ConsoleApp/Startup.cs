@@ -38,27 +38,58 @@ public static class Startup
     // TODO: need to refactoring
     public static async Task PrepareJsonDomain(IServiceProvider services)
     {
-        const string salesPath = "sales.json";
         var serializer = services.GetService<IJsonParser>();
-        var sales = new List<Sale>
-        {
-            new() { Id = 123, Date = new DateTime(2023, 09, 01), Sales = 10, Stock = 50 },
-            new() { Id = 567, Date = new DateTime(2023, 09, 01), Sales = 0, Stock = 100 },
-            new() { Id = 678, Date = new DateTime(2023, 09, 01), Sales = 0, Stock = 50 },
-        };
-
-        var salesJson = serializer.Serialize(sales);
-        await File.WriteAllTextAsync(salesPath, salesJson);
-
         
+        const string salesPath = "sales.json";
+        if (!File.Exists(salesPath))
+        {
+            var sales = new List<Sale>();
+            FillSalesCollection(sales);
+            var salesJson = serializer.Serialize(sales);
+            await File.WriteAllTextAsync(salesPath, salesJson);
+        }
+
+
         const string coefPath = "sales.json";
-        var coefs = new List<SeasonCoef>
+        if (!File.Exists(coefPath))
         {
-            new() { Id = 123, Month = 1, Coef = 0.5m },
-            new() { Id = 657, Month = 12, Coef = 3m },
-        };
-        
-        var coefsJson = serializer.Serialize(coefs);
-        await File.WriteAllTextAsync(salesPath, coefsJson);
+            var seasonCoefs = new List<SeasonCoef>();
+            FillCoefCollection(seasonCoefs);
+            var coefsJson = serializer.Serialize(seasonCoefs);
+            await File.WriteAllTextAsync(coefPath, coefsJson);
+        }
+    }
+
+    private static async Task FillSalesCollection(ICollection<Sale> sales)
+    {
+        for (ulong i = 1; i <= 10; i++)
+        {
+            for (ulong day = 1; day <= 30; day++)
+            {
+                sales.Add(new Sale
+                {
+                    Id = i,
+                    Date = new DateTime(2023, 09, (int)day),
+                    Sales = (uint)new Random().Next(1, 20),
+                    Stock = (uint)new Random().Next(10, 100)
+                });
+            }
+        }
+    }
+    
+    private static async Task FillCoefCollection(List<SeasonCoef> coefs)
+    {
+        for (uint i = 1; i <= 10; i++)
+        {
+            for (uint month = 1; month <= 12; month++)
+            {
+                coefs.Add(new SeasonCoef
+                {
+                    Id = i,
+                    Month = month,
+                    Coef =  Math.Round((decimal)(new Random().NextDouble() * 2.5), 2)
+                });
+            }
+        }
     }
 }

@@ -4,5 +4,5 @@ namespace OzonSales.ConsoleApp.Abstractions;
 
 public interface IExecutor
 {
-    Task<decimal> ExecuteAsync(Command command);
+    Task<decimal?> ExecuteAsync(Command command);
 }

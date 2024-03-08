@@ -11,7 +11,7 @@ public class PredictionExecutor : IPredictionExecutor
     {
         _sales = sales;
     }
-    public async Task<decimal> ExecuteAsync(Command command)
+    public async Task<decimal?> ExecuteAsync(Command command)
     {
         return await _sales.GetPredictionAsync(command);
     }

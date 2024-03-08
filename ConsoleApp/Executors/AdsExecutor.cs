@@ -11,7 +11,7 @@ public class AdsCommandExecutor : IAdsExecutor
     {
         _sales = sales;
     }
-    public async Task<decimal> ExecuteAsync(Command command)
+    public async Task<decimal?> ExecuteAsync(Command command)
     {
         return await _sales.GetADSAsync(command);
     }

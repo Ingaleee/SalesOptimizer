@@ -2,5 +2,5 @@
 
 public interface IDataProvider<TEntity>
 {
-    Task GetAsync();
+    Task<ICollection<TEntity>?> GetAsync();
 }
