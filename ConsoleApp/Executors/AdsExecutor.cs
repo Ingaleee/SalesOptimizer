@@ -4,10 +4,10 @@ using OzonSales.Types.Commands;
 
 namespace OzonSales.ConsoleApp.Executors;
 
-public class AdsCommandExecutor : IAdsExecutor
+public class AdsExecutor : IAdsExecutor
 {
     private readonly ISalesService _sales;
-    public AdsCommandExecutor(ISalesService sales)
+    public AdsExecutor(ISalesService sales)
     {
         _sales = sales;
     }

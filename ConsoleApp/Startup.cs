@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OzonSales.Business;
+using OzonSales.Business.Abstractions;
 using OzonSales.ConsoleApp.Abstractions;
 using OzonSales.ConsoleApp.Abstractions.Executors;
 using OzonSales.ConsoleApp.Executors;
@@ -18,7 +20,7 @@ public static class Startup
 
         services.AddTransient<IExecutorResolver, ExecutorResolver>();
         
-        services.AddTransient<IAdsExecutor, AdsCommandExecutor>();
+        services.AddTransient<IAdsExecutor, AdsExecutor>();
         services.AddTransient<IDemandExecutor, DemandExecutor>();
         services.AddTransient<IPredictionExecutor, PredictionExecutor>();
         
@@ -28,6 +30,8 @@ public static class Startup
         services.AddTransient<IInputHandler, InputHandler>();
 
         services.AddTransient<IJsonParser, NetJsonParser>();
+
+        services.AddTransient<ISalesService, SalesService>();
 
         services.WithJsonDomain<Sale>("sales.json");
         services.WithJsonDomain<SeasonCoef>("coef.json");
@@ -50,7 +54,7 @@ public static class Startup
         }
 
 
-        const string coefPath = "sales.json";
+        const string coefPath = "coef.json";
         if (!File.Exists(coefPath))
         {
             var seasonCoefs = new List<SeasonCoef>();

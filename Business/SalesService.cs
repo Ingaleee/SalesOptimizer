@@ -90,6 +90,12 @@ public class SalesService : ISalesService
 
         var itemsLeft = stockSum - salesSum;
 
-        return prediction - itemsLeft;
+        var demand = prediction - itemsLeft;
+        if (demand < 0)
+        {
+            return 0;
+        }
+
+        return demand;
     }
 }

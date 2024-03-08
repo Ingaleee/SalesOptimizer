@@ -15,9 +15,9 @@ public class InputHandler : IInputHandler
 
     public async Task HandleAsync()
     {
+        Console.WriteLine("Allowed commands: <ads|prediction|demand> [id] [days]");
         while (true)
         {
-            Console.WriteLine("Allowed commands: <ads|prediction|demand> [id] [days]");
             Console.WriteLine("Input command:");
             var input = Console.ReadLine();
             if (input?.ToLower() == "q")
@@ -27,9 +27,19 @@ public class InputHandler : IInputHandler
             
             var command = _parser.ToCommand(input);
             var executor = _resolver.GetExecutor(command);
+            if (executor is null)
+            {
+                Console.WriteLine("Invalid command");
+            }
+            
             var result = await executor.ExecuteAsync(command);
-
+            if (result is null)
+            {
+                Console.WriteLine("Invalid command");
+            }
+            
             Console.WriteLine($"Response: {result}");
+            Console.ReadKey();
         }
     }
 }

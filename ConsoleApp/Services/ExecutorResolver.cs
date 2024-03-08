@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OzonSales.ConsoleApp.Abstractions;
+using OzonSales.ConsoleApp.Abstractions.Executors;
 using OzonSales.ConsoleApp.Executors;
 using OzonSales.Types.Commands;
 using OzonSales.Types.Primitives;
@@ -16,9 +17,9 @@ public class ExecutorResolver : IExecutorResolver
 
     public IExecutor? GetExecutor(Command command) => command.Type switch
     {
-        CommandType.Ads => _services.GetService<AdsCommandExecutor>(),
-        CommandType.Prediction => _services.GetService<PredictionExecutor>(),
-        CommandType.Demand => _services.GetService<DemandExecutor>(),
+        CommandType.Ads => _services.GetService<IAdsExecutor>(),
+        CommandType.Prediction => _services.GetService<IPredictionExecutor>(),
+        CommandType.Demand => _services.GetService<IDemandExecutor>(),
         _ => null
     };
 }
