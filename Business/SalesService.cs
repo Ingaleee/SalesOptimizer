@@ -24,7 +24,8 @@ public class SalesService : ISalesService
             return null;
         }
 
-        return SalesCalculator.CalculateAds(sales, command);
+        var requiredItemSales = sales.Where(i => i.Id == command.Id);
+        return SalesCalculator.CalculateAds(requiredItemSales);
     }
 
     public async Task<decimal?> GetPredictionAsync(Command command)
@@ -48,7 +49,8 @@ public class SalesService : ISalesService
             return null;
         }
 
-        var ads = SalesCalculator.CalculateAds(sales, command);
+        var requiredItemSales = sales.Where(i => i.Id == command.Id);
+        var ads = SalesCalculator.CalculateAds(requiredItemSales);
         if (!ads.HasValue)
         {
             return null;
@@ -72,7 +74,8 @@ public class SalesService : ISalesService
             return null;
         }
 
-        var ads = SalesCalculator.CalculateAds(sales, command);
+        var requiredItemSales = sales.Where(i => i.Id == command.Id);
+        var ads = SalesCalculator.CalculateAds(requiredItemSales);
         if (!ads.HasValue)
         {
             return null;
@@ -84,18 +87,6 @@ public class SalesService : ISalesService
             return null;
         }
 
-        var requiredItemsSales = sales.Where(i => i.Id == command.Id);
-        var salesSum = requiredItemsSales.Sum(i => i.Sales);
-        var stockSum = requiredItemsSales.Sum(i => i.Stock);
-
-        var itemsLeft = stockSum - salesSum;
-
-        var demand = prediction - itemsLeft;
-        if (demand < 0)
-        {
-            return 0;
-        }
-
-        return demand;
+        return SalesCalculator.CalculateDemand(requiredItemSales, prediction.Value);
     }
 }
